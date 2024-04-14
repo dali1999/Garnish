@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
-export default function Home() {
+function Home() {
   return (
     <>
       <Head>
@@ -9,7 +10,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>세팅 완료!</div>
+      <div>
+        <Link href="/dailycocktail">오늘의 칵테일</Link>
+      </div>
     </>
   );
 }
+
+export default Home;
