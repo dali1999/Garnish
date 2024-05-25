@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import * as S from '@pages/dailydrink.style';
+import * as S from '@pages/dailydrink/dailydrink.style';
 import Ingredients from '@components/dailydrink/Ingredients';
-import { getRandomCocktail } from './api/api';
+import useRandomCocktail from '@hooks/useQuery';
 
 type RandomData = {
   strDrink: string;
@@ -13,33 +13,31 @@ type RandomData = {
   [key: string]: string;
 };
 
-export async function getStaticProps() {
-  const res = await getRandomCocktail();
-  const randomData: RandomData = res.drinks[0];
-
-  return {
-    props: {
-      randomData,
-    },
-  };
-}
-
-type Props = {
-  randomData: RandomData;
-};
-
-function dailycocktail({ randomData }: Props) {
+const extractIngredientsAndMeasures = (data: RandomData) => {
   const ingredients: string[] = [];
   const measures: string[] = [];
 
   for (let i = 1; i <= 15; i++) {
-    const ingredient = randomData[`strIngredient${i}`];
-    const measure = randomData[`strMeasure${i}`];
+    const ingredient = data[`strIngredient${i}`];
+    const measure = data[`strMeasure${i}`];
     if (ingredient && measure) {
       ingredients.push(ingredient);
       measures.push(measure);
     }
   }
+  return { ingredients, measures };
+};
+
+function Dailycocktail() {
+  const { data, isLoading, error } = useRandomCocktail();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading data</div>;
+  if (!data || !data.drinks || !data.drinks[0])
+    return <div>No cocktail data found</div>;
+
+  const randomData: RandomData = data.drinks[0];
+  const { ingredients, measures } = extractIngredientsAndMeasures(randomData);
 
   return (
     <>
@@ -68,4 +66,4 @@ function dailycocktail({ randomData }: Props) {
   );
 }
 
-export default dailycocktail;
+export default Dailycocktail;
