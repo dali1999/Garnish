@@ -1,8 +1,4 @@
-import styled, { css } from 'styled-components';
-
-interface MainContentProps {
-  isVisible: boolean;
-}
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -16,13 +12,14 @@ export const BackgroundImageWrapper = styled.div`
   height: 100vh;
   position: fixed;
   top: 0;
-  filter: blur(6px);
-  -webkit-filter: blur(6px);
+  /* filter: blur(6px); */
+  /* -webkit-filter: blur(6px); */
   z-index: -1;
 `;
 
-const MainContentBase = css`
-  background-color: #f5ede9;
+export const MainContent = styled.div`
+  padding: 40px 60px;
+  background-color: #f8f1f1;
   margin-top: 100px;
   width: 1000px;
   height: 100vh;
@@ -31,18 +28,6 @@ const MainContentBase = css`
   position: absolute;
   top: 0;
   transition: opacity 0.5s ease;
-`;
-
-export const MainContent1 = styled.div<MainContentProps>`
-  ${MainContentBase}
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  pointer-events: ${({ isVisible }) => (isVisible ? 'auto' : 'none')};
-`;
-
-export const MainContent2 = styled.div<MainContentProps>`
-  ${MainContentBase}
-  opacity: ${({ isVisible }) => (isVisible ? 0 : 1)};
-  pointer-events: ${({ isVisible }) => (isVisible ? 'none' : 'auto')};
 `;
 
 export const Button = styled.button`

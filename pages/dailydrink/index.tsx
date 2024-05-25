@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import * as S from '@pages/dailydrink/dailydrink.style';
 import Ingredients from '@components/dailydrink/Ingredients';
-import useRandomCocktail from '@hooks/useQuery';
+import { useRandomCocktail } from '@hooks/queryHooks';
 
 type RandomData = {
   strDrink: string;
