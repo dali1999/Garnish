@@ -1,18 +1,17 @@
 import React from 'react';
-import Link from 'next/link';
 import * as S from '@components/home/MainContent.style';
 
 function MainContent() {
   return (
     <S.Container>
-      <S.Title>Cocktail</S.Title>
+      <S.Title>Garnish</S.Title>
       <S.MenuContent>
         <S.MenuLeft>
-          <Link href="/dailydrink">오늘의 칵테일</Link>
-          <Link href="/search-cocktail">칵테일 검색하기</Link>
+          <S.StyledLink href="/dailydrink">오늘의 칵테일</S.StyledLink>
+          <S.StyledLink href="/search-cocktail">칵테일 검색하기</S.StyledLink>
         </S.MenuLeft>
 
-        <S.MenuRight>2</S.MenuRight>
+        <S.MenuRight>칵테일 재료 보기</S.MenuRight>
       </S.MenuContent>
     </S.Container>
   );

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -18,27 +19,32 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 50px;
-  margin-bottom: 30px;
+  font-size: 70px;
+  margin: 20px 0 50px;
+  font-family: 'Times New Roman', Times, serif;
 `;
 
 export const MenuContent = styled.div`
   display: flex;
-  /* justify-content: center; */
   border-top: 2px solid black;
   width: 100%;
   height: 100%;
 `;
 
+export const StyledLink = styled(Link)`
+  margin: 20px 0;
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+`;
+
 export const MenuLeft = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid black;
   width: 50%;
 `;
 
 export const MenuRight = styled.div`
-  border: 1px solid rgba(0, 0, 0, 0.1);
   width: 50%;
 `;
